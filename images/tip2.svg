@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff2e2"/><stop offset="1" stop-color="#ffe0c2"/></linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <circle cx="340" cy="50" r="100" fill="#ffffff" opacity="0.4"/>
+  <circle cx="40" cy="270" r="90" fill="#ffffff" opacity="0.3"/>
+  <g transform="translate(200 150) rotate(-90)">
+    <circle r="78" fill="none" stroke="#2f6fed" stroke-width="40" stroke-dasharray="242 490" stroke-dashoffset="0"/>
+    <circle r="78" fill="none" stroke="#f6a623" stroke-width="40" stroke-dasharray="142 490" stroke-dashoffset="-248"/>
+    <circle r="78" fill="none" stroke="#22c55e" stroke-width="40" stroke-dasharray="94 490" stroke-dashoffset="-396"/>
+  </g>
+  <circle cx="200" cy="150" r="52" fill="#fff"/>
+  <text x="200" y="146" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#1a1d23" text-anchor="middle">50/30/20</text>
+  <text x="200" y="165" font-family="Arial, sans-serif" font-size="10" fill="#8a909b" text-anchor="middle">дохід</text>
+  <g font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#1a1d23">
+    <rect x="20" y="40" width="74" height="26" rx="13" fill="#fff"/><circle cx="36" cy="53" r="6" fill="#2f6fed"/><text x="48" y="58">Потреби</text>
+    <rect x="306" y="40" width="74" height="26" rx="13" fill="#fff"/><circle cx="322" cy="53" r="6" fill="#f6a623"/><text x="334" y="58">Бажання</text>
+    <rect x="278" y="240" width="102" height="26" rx="13" fill="#fff"/><circle cx="294" cy="253" r="6" fill="#22c55e"/><text x="306" y="258">Заощадження</text>
+  </g>
+</svg>

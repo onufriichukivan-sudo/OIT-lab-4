@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8f0ff"/><stop offset="1" stop-color="#cfe0ff"/></linearGradient>
+    <linearGradient id="b1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b8ff5"/><stop offset="1" stop-color="#2f6fed"/></linearGradient>
+    <linearGradient id="coin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd76a"/><stop offset="1" stop-color="#f6a623"/></linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <circle cx="70" cy="60" r="90" fill="#ffffff" opacity="0.35"/>
+  <circle cx="360" cy="270" r="110" fill="#ffffff" opacity="0.3"/>
+  <rect x="62" y="52" width="236" height="188" rx="18" fill="#fff"/>
+  <rect x="82" y="72" width="70" height="9" rx="4.5" fill="#d5dcea"/>
+  <rect x="82" y="88" width="40" height="7" rx="3.5" fill="#e6ebf5"/>
+  <line x1="82" x2="278" y1="205" y2="205" stroke="#e6ebf5" stroke-width="2"/>
+  <rect x="88" y="165" width="26" height="40" rx="7" fill="url(#b1)" opacity="0.55"/>
+  <rect x="126" y="148" width="26" height="57" rx="7" fill="url(#b1)" opacity="0.7"/>
+  <rect x="164" y="128" width="26" height="77" rx="7" fill="url(#b1)" opacity="0.85"/>
+  <rect x="202" y="108" width="26" height="97" rx="7" fill="url(#b1)"/>
+  <rect x="240" y="118" width="26" height="87" rx="7" fill="url(#b1)" opacity="0.9"/>
+  <path d="M96 150 L134 134 L172 112 L214 92 L252 100" fill="none" stroke="#f6a623" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="252" cy="100" r="6" fill="#fff" stroke="#f6a623" stroke-width="4"/>
+  <g transform="translate(300 170)">
+    <ellipse cx="38" cy="86" rx="40" ry="12" fill="#c98a12" opacity="0.35"/>
+    <rect x="0" y="62" width="76" height="22" rx="11" fill="url(#coin)"/>
+    <rect x="6" y="38" width="76" height="22" rx="11" fill="url(#coin)"/>
+    <rect x="-2" y="14" width="76" height="22" rx="11" fill="url(#coin)"/>
+    <text x="36" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#b5760a" text-anchor="middle">₴</text>
+  </g>
+</svg>

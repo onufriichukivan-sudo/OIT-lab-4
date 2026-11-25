@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Правило 50/30/20 (Sass / SCSS) | FinTrack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Скомпільований файл зі стилів styles/article-sass.scss -->
+  <link rel="stylesheet" href="../styles/article-sass.css">
+</head>
+<body>
+
+  <header class="sass-nav">
+    <div class="sass-nav__inner">
+      <a href="../index.html" class="sass-nav__brand">
+        <img src="../images/logo.png" alt="FinTrack">
+      </a>
+      <nav class="sass-nav__links" aria-label="Навігація сторінки">
+        <a href="../index.html#dashboard">Головна панель</a>
+        <a href="article-1.html">Гід (Bootstrap 5)</a>
+        <a href="article-2.html" class="is-active">Правило 50/30/20</a>
+        <a href="invitation.html">Запрошення</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="sass-layout">
+    <article class="sass-article">
+      <div class="sass-article__hero">
+        <div>
+          <span class="sass-article__tag">Стилізовано через Sass (SCSS)</span>
+          <h1 class="sass-article__title">Правило 50/30/20: збалансований розподіл доходу</h1>
+          <p class="sass-article__lead">
+            Проста формула фінансового планування, яка допомагає закривати базові витрати, дозволяти собі відпочинок і стабільно формувати капітал.
+          </p>
+        </div>
+        <div class="sass-article__media">
+          <img src="../images/tip2.svg" alt="Кругова діаграма розподілу доходу 50/30/20">
+        </div>
+      </div>
+
+      <div class="sass-article__body">
+        <h2>Як працює формула</h2>
+        <p>
+          Правило 50/30/20 пропонує ділити чистий щомісячний дохід (після сплати податків) на три чіткі кошики. Такий підхід позбавляє потреби вести десятки складних таблиць.
+        </p>
+
+        <div class="bucket-grid">
+          <section class="bucket-card bucket-card--needs">
+            <span class="bucket-card__pill">Базовий рівень</span>
+            <div class="bucket-card__pct">50%</div>
+            <div class="bucket-card__name">Обов'язкові потреби</div>
+            <p class="bucket-card__desc">
+              Оренда або житло, комунальні послуги, продукти харчування, базовий транспорт та зв'язок.
+            </p>
+          </section>
+
+          <section class="bucket-card bucket-card--wants">
+            <span class="bucket-card__pill">Якість життя</span>
+            <div class="bucket-card__pct">30%</div>
+            <div class="bucket-card__name">Бажання та дозвілля</div>
+            <p class="bucket-card__desc">
+              Кав'ярні, кіно, подорожі, хобі, спортивні секції та цифрові підписки.
+            </p>
+          </section>
+
+          <section class="bucket-card bucket-card--savings">
+            <span class="bucket-card__pill">Майбутнє</span>
+            <div class="bucket-card__pct">20%</div>
+            <div class="bucket-card__name">Заощадження та цілі</div>
+            <p class="bucket-card__desc">
+              Фінансова подушка безпеки, інвестиційні інструменти або дострокове погашення зобов'язань.
+            </p>
+          </section>
+        </div>
+
+        <h2>Гнучка адаптація під ваші умови</h2>
+        <p>
+          Це не жорсткий закон, а зручний орієнтир. Якщо у вашому місті оренда житла та комунальні послуги займають понад половину бюджету, ви можете тимчасово перейти на пропорцію <strong>60 / 20 / 20</strong>. Головне правило — частка на заощадження ніколи не повинна дорівнювати нулю.
+        </p>
+        <p>
+          Щоб перевірити власний баланс, додайте транзакції за останній місяць у FinTrack і порівняйте частки категорій у блоці «Найбільші витрати за категоріями».
+        </p>
+
+        <div class="sass-cta">
+          <div>
+            <strong>Готові перевірити свої пропорції?</strong>
+            <div style="font-size:0.86rem;color:#475569;">Поверніться на дашборд та перегляньте аналітику за категоріями.</div>
+          </div>
+          <a href="../index.html#categories" class="sass-cta__btn">Перейти до категорій &rarr;</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="sass-footer">
+    &copy; 2026 FinTrack &middot; Вихідний код стилів: <code>styles/article-sass.scss</code> &rarr; <code>styles/article-sass.css</code>
+  </footer>
+
+</body>
+</html>

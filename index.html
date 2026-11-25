@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="FinTrack — сучасний вебзастосунок для обліку особистих доходів, витрат та фінансової аналітики.">
+<title>FinTrack — Фінансовий трекер</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body id="top">
+
+  <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+
+  <div class="page">
+    <div class="shell">
+
+      <!-- ===================== МОБІЛЬНА ШАПКА З БУРГЕР-МЕНЮ ===================== -->
+      <div class="mobile-topbar">
+        <a href="#dashboard" class="logo">
+          <img src="images/logo.png" alt="FinTrack">
+        </a>
+        <div class="mobile-topbar-actions">
+          <button type="button" class="theme-toggle-btn theme-toggle-btn--mobile" data-theme-toggle aria-label="Перемкнути тему" title="Змінити тему">
+            <span class="theme-icon" aria-hidden="true">🌙</span>
+          </button>
+          <button type="button" id="mobile-menu-toggle" class="burger-btn" aria-expanded="false" aria-controls="main-nav" aria-label="Відкрити меню навігації">
+            <span class="burger-icon" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span class="burger-label">Меню</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===================== САЙДБАР / АДАПТИВНЕ МЕНЮ ===================== -->
+      <aside class="sidebar" id="main-nav" tabindex="-1" aria-label="Основна навігація">
+        <div class="sidebar-head">
+          <a href="#dashboard" class="logo">
+            <img src="images/logo.png" alt="FinTrack">
+          </a>
+          <button type="button" id="mobile-menu-close" class="sidebar-close-btn" aria-label="Закрити меню">&#10005;</button>
+        </div>
+
+        <nav aria-label="Розділи">
+          <ul>
+            <li class="has-submenu">
+              <a href="#dashboard" aria-current="page" aria-haspopup="true" aria-expanded="false">
+                <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18"><path d="M3 17l5-5 4 4 8-8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Звіти
+                <span class="submenu-arrow" aria-hidden="true">&#9662;</span>
+              </a>
+              <ul class="submenu">
+                <li><a href="#dashboard">Показники</a></li>
+                <li><a href="#chart">Графік активності</a></li>
+                <li><a href="#categories">Категорії</a></li>
+              </ul>
+            </li>
+            <li class="has-submenu">
+              <a href="#news" aria-haspopup="true" aria-expanded="false">
+                <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18"><path d="M13 2L4 14h6l-1 8 9-12h-6z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
+                Поради
+                <span class="submenu-arrow" aria-hidden="true">&#9662;</span>
+              </a>
+              <ul class="submenu">
+                <li><a href="#news">Усі поради</a></li>
+                <li><a href="pages/article-1.html">Гід (Bootstrap 5)</a></li>
+                <li><a href="pages/article-2.html">Правило 50/30/20 (Sass)</a></li>
+                <li><a href="pages/article-3.html">Подушка безпеки</a></li>
+              </ul>
+            </li>
+            <li class="has-submenu">
+              <a href="#transactions" aria-haspopup="true" aria-expanded="false">
+                <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                Рахунки
+                <span class="submenu-arrow" aria-hidden="true">&#9662;</span>
+              </a>
+              <ul class="submenu">
+                <li><a href="#transactions">Мої транзакції</a></li>
+                <li><a href="#tx-form">Додати транзакцію</a></li>
+                <li><a href="#rankings">Найбільші витрати</a></li>
+              </ul>
+            </li>
+            <li><a href="#categories">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+              Бюджети
+            </a></li>
+            <li><a href="pages/invitation.html">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+              Запрошення
+            </a></li>
+          </ul>
+
+          <h2>Підтримка</h2>
+          <ul>
+            <li>
+              <button type="button" id="open-survey" aria-haspopup="dialog" aria-controls="survey-modal">
+                <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3 11.2V16h6v-1.8A6 6 0 0012 3z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Почати
+              </button>
+            </li>
+            <li><a href="#feedback">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Відгуки та зв'язок
+            </a></li>
+            <li><button type="button" id="open-settings" aria-haspopup="dialog" aria-controls="settings-modal">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" fill="none"/><path d="M19 12a7 7 0 00-.2-1.6l2-1.6-2-3.4-2.4 1a7 7 0 00-2.8-1.6L13 2h-4l-.6 2.8a7 7 0 00-2.8 1.6l-2.4-1-2 3.4 2 1.6A7 7 0 003 12c0 .5 0 1.1.2 1.6l-2 1.6 2 3.4 2.4-1a7 7 0 002.8 1.6L9 22h4l.6-2.8a7 7 0 002.8-1.6l2.4 1 2-3.4-2-1.6c.2-.5.2-1.1.2-1.6z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/></svg>
+              Налаштування
+            </button></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- ===================== ОСНОВНИЙ КОНТЕНТ ===================== -->
+      <div class="main" id="dashboard">
+
+        <header class="main-header">
+          <h1>Звіти</h1>
+
+          <div class="main-header-actions">
+            <form role="search" class="header-search" id="search-form" action="#" method="get">
+              <label for="search-input" class="visually-hidden">Пошук транзакцій</label>
+              <div class="search-input-wrap">
+                <input type="search" id="search-input" name="q" placeholder="Пошук транзакцій…" autocomplete="off">
+                <button type="submit" class="search-btn" aria-label="Знайти">
+                  <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.2" fill="none"/><line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+                </button>
+              </div>
+            </form>
+
+            <button type="button" class="theme-toggle-btn theme-toggle-btn--desktop" data-theme-toggle aria-label="Перемкнути тему" title="Змінити тему">
+              <span class="theme-icon" aria-hidden="true">🌙</span>
+            </button>
+
+            <a href="#" class="download-link" id="export-csv">
+              <img src="images/download.svg" alt="">
+              <span>Експорт CSV</span>
+            </a>
+
+            <button type="button" id="open-auth" class="signin-btn" aria-haspopup="dialog" aria-controls="auth-modal" aria-label="Sign in — Вхід або реєстрація" title="Sign in / Вхід">
+              <svg class="signin-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span id="profile-initial">Sign in</span>
+            </button>
+            <button type="button" id="logout-btn" class="logout-btn" hidden>Вийти</button>
+          </div>
+        </header>
+
+        <!-- Фільтри (працюють з даними Supabase) -->
+        <form class="filters" id="filters" action="#" method="get">
+          <div>
+            <label for="filter-period">Період</label>
+            <select id="filter-period" name="period">
+              <option value="all" selected>Весь час</option>
+              <option value="month">Цей місяць</option>
+              <option value="year">Цей рік</option>
+            </select>
+          </div>
+          <div>
+            <label for="filter-type">Тип</label>
+            <select id="filter-type" name="type">
+              <option value="all" selected>Усі</option>
+              <option value="income">Доходи</option>
+              <option value="expense">Витрати</option>
+            </select>
+          </div>
+          <div>
+            <label for="filter-category">Категорія</label>
+            <select id="filter-category" name="category">
+              <option value="" selected>Усі</option>
+            </select>
+          </div>
+        </form>
+
+        <!-- Показники + графік -->
+        <section aria-labelledby="stats-heading" class="stats-block">
+          <h2 id="stats-heading" class="visually-hidden">Основні показники</h2>
+
+          <div class="stats-grid">
+            <article class="stat-card anim-card" style="--stagger: 0;">
+              <h3>Найбільша витрата</h3>
+              <p class="stat-value" id="stat-max">0 ₴</p>
+            </article>
+
+            <article class="stat-card anim-card" style="--stagger: 1;">
+              <h3>Транзакцій</h3>
+              <p class="stat-value" id="stat-count">0</p>
+            </article>
+
+            <article class="stat-card anim-card" style="--stagger: 2;">
+              <h3>Сер. сума витрати</h3>
+              <p class="stat-value" id="stat-avg">0 ₴</p>
+            </article>
+
+            <article class="stat-card stat-card--sparkline anim-card" style="--stagger: 3;">
+              <h3>Всього доходів</h3>
+              <p class="stat-value stat-value--positive" id="stat-income">0 ₴</p>
+              <div class="sparkline" id="spark-income" aria-hidden="true"></div>
+            </article>
+
+            <article class="stat-card stat-card--sparkline anim-card" style="--stagger: 4;">
+              <h3>Баланс</h3>
+              <p class="stat-value" id="stat-balance">0 ₴</p>
+              <div class="sparkline" id="spark-balance" aria-hidden="true"></div>
+            </article>
+
+            <article class="stat-card stat-card--sparkline anim-card" style="--stagger: 5;">
+              <h3>Всього витрат</h3>
+              <p class="stat-value stat-value--negative" id="stat-expense">0 ₴</p>
+              <div class="sparkline" id="spark-expense" aria-hidden="true"></div>
+            </article>
+
+            <article class="chart-card anim-card" style="--stagger: 6;">
+              <div class="chart-card-head">
+                <h3>Активність</h3>
+                <label for="chart-period" class="visually-hidden">Період графіка</label>
+                <select id="chart-period" name="chart-period">
+                  <option value="months" selected>По місяцях</option>
+                  <option value="days">Останні 14 днів</option>
+                </select>
+              </div>
+              <figure class="chart-figure">
+                <div class="chart" id="chart" role="img" aria-label="Стовпчаста діаграма доходів і витрат"></div>
+                <figcaption class="chart-legend">
+                  <span><i class="dot dot--income"></i>Доходи</span>
+                  <span><i class="dot dot--expense"></i>Витрати</span>
+                </figcaption>
+              </figure>
+            </article>
+          </div>
+        </section>
+
+        <!-- Категорії (з даних) -->
+        <section id="categories" aria-labelledby="categories-heading" class="two-col">
+          <h2 id="categories-heading" class="visually-hidden">Категорії</h2>
+
+          <article class="panel">
+            <h3>Найбільші витрати за категоріями</h3>
+            <ul class="topic-list" id="top-expense"></ul>
+            <p class="panel-empty" id="top-expense-empty">Додайте витрати, і тут з'являться категорії.</p>
+          </article>
+
+          <article class="panel">
+            <h3>Джерела доходу</h3>
+            <ul class="topic-list" id="top-income"></ul>
+            <p class="panel-empty" id="top-income-empty">Додайте доходи, і тут з'являться джерела.</p>
+          </article>
+        </section>
+
+        <!-- Транзакції (дані з бази Supabase) -->
+        <section id="transactions" aria-labelledby="tx-heading" class="card-section">
+          <div class="section-head">
+            <h2 id="tx-heading">Мої транзакції</h2>
+            <span class="count-pill" id="tx-count" hidden></span>
+          </div>
+
+          <div id="tx-guest" class="tx-guest">
+            <p>Увійдіть в акаунт, щоб бачити й додавати свої транзакції.</p>
+            <button type="button" id="tx-login-btn" class="btn-primary">Sign in / Увійти</button>
+          </div>
+
+          <div id="tx-app" hidden>
+            <form id="tx-form" class="tx-form">
+              <div class="tx-field tx-field--wide">
+                <label for="tx-title">Опис</label>
+                <input type="text" id="tx-title" name="title" placeholder="Наприклад: Супермаркет" required maxlength="80">
+              </div>
+              <div class="tx-field">
+                <label for="tx-category">Категорія</label>
+                <select id="tx-category" name="category"></select>
+              </div>
+              <div class="tx-field">
+                <label for="tx-type">Тип</label>
+                <select id="tx-type" name="type">
+                  <option value="expense" selected>Витрата</option>
+                  <option value="income">Дохід</option>
+                </select>
+              </div>
+              <div class="tx-field">
+                <label for="tx-amount">Сума, ₴</label>
+                <input type="number" id="tx-amount" name="amount" min="0.01" step="0.01" placeholder="0.00" required>
+              </div>
+              <div class="tx-field">
+                <label for="tx-date">Дата</label>
+                <input type="date" id="tx-date" name="date" required>
+              </div>
+              <button type="submit" class="btn-primary">Додати</button>
+            </form>
+            <p class="form-msg" id="tx-msg" role="alert"></p>
+
+            <ul class="tx-list" id="tx-list"></ul>
+            <p id="tx-empty" class="panel-empty" hidden>Нічого не знайдено. Додайте транзакцію або змініть фільтри.</p>
+          </div>
+        </section>
+
+        <!-- Рейтинги (з даних) -->
+        <section id="rankings" aria-labelledby="rank-heading" class="two-col">
+          <h2 id="rank-heading" class="visually-hidden">Рейтинги</h2>
+
+          <article class="panel">
+            <h3>Найбільші витрати</h3>
+            <ul class="rank-list" id="rank-expense"></ul>
+            <p class="panel-empty" id="rank-expense-empty">Поки немає витрат.</p>
+          </article>
+
+          <article class="panel">
+            <h3>Останні надходження</h3>
+            <ul class="rank-list" id="rank-income"></ul>
+            <p class="panel-empty" id="rank-income-empty">Поки немає доходів.</p>
+          </article>
+        </section>
+
+        <!-- Новини / поради -->
+        <section id="news" aria-labelledby="news-heading" class="card-section">
+          <div class="section-head-split">
+            <div>
+              <h2 id="news-heading">Фінансові поради та матеріали</h2>
+              <p class="section-note">Наведіть курсор на картку, щоб побачити ілюстрацію, або відкрийте повний розбір.</p>
+            </div>
+            <a href="pages/invitation.html" class="invite-banner-link" title="Переглянути запрошення на подію">
+              &#9993; Запрошення на воркшоп
+            </a>
+          </div>
+          <ul class="tip-list">
+            <li>
+              <article class="tip-card">
+                <div class="tip-media">
+                  <img src="images/tip1.svg" alt="Графік витрат і стос монет" loading="lazy">
+                  <h3 class="tip-title">Як почати вести бюджет</h3>
+                </div>
+                <div class="tip-body">
+                  <span class="tech-tag">Bootstrap 5</span>
+                  <p>Прості кроки та інтерактивний калькулятор для тих, хто тільки починає стежити за фінансами.</p>
+                  <a href="pages/article-1.html">Читати далі &rarr;</a>
+                </div>
+              </article>
+            </li>
+            <li>
+              <article class="tip-card">
+                <div class="tip-media">
+                  <img src="images/tip2.svg" alt="Кругова діаграма розподілу доходу" loading="lazy">
+                  <h3 class="tip-title">Правило 50/30/20</h3>
+                </div>
+                <div class="tip-body">
+                  <span class="tech-tag tech-tag--sass">Sass / SCSS</span>
+                  <p>Популярний метод розподілу доходу на потреби, бажання й заощадження.</p>
+                  <a href="pages/article-2.html">Читати далі &rarr;</a>
+                </div>
+              </article>
+            </li>
+            <li>
+              <article class="tip-card">
+                <div class="tip-media">
+                  <img src="images/tip3.svg" alt="Щит із галочкою та монети" loading="lazy">
+                  <h3 class="tip-title">Подушка безпеки</h3>
+                </div>
+                <div class="tip-body">
+                  <span class="tech-tag">База знань</span>
+                  <p>Скільки грошей варто відкладати на непередбачені випадки.</p>
+                  <a href="pages/article-3.html">Читати далі &rarr;</a>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Зворотний зв'язок + Карусель відгуків користувачів -->
+        <section id="feedback" aria-labelledby="feedback-heading" class="card-section">
+          <div class="carousel-header">
+            <div>
+              <h2 id="feedback-heading">Відгуки користувачів та зворотний зв'язок</h2>
+              <p class="section-note">Реальний досвід користування FinTrack та форма для вашого відгуку.</p>
+            </div>
+            <div class="carousel-controls" aria-label="Керування каруселлю відгуків">
+              <button type="button" id="reviews-prev" class="carousel-btn" aria-label="Попередній відгук">&#8249;</button>
+              <button type="button" id="reviews-next" class="carousel-btn" aria-label="Наступний відгук">&#8250;</button>
+            </div>
+          </div>
+
+          <!-- Карусель відгуків -->
+          <div class="reviews-carousel" id="reviews-carousel" role="region" aria-roledescription="карусель" aria-label="Відгуки користувачів про сайт">
+            <div class="reviews-viewport">
+              <div class="reviews-track" id="reviews-track">
+                <article class="review-slide" aria-label="Відгук 1 з 4">
+                  <div class="review-card">
+                    <div class="review-top">
+                      <div class="review-avatar" style="background:#eaf1fe;color:#2f6fed;">ОК</div>
+                      <div>
+                        <strong class="review-author">Олена Коваленко</strong>
+                        <span class="review-role">Студентка, м. Чернівці</span>
+                      </div>
+                      <span class="review-stars" aria-label="Оцінка 5 з 5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                    </div>
+                    <p class="review-text">«Завдяки FinTrack нарешті побачила, скільки витрачаю на каву та дрібні підписки. За два місяці вдалося відкласти першу фінансову подушку!»</p>
+                    <span class="review-date">12 листопада 2026</span>
+                  </div>
+                </article>
+
+                <article class="review-slide" aria-label="Відгук 2 з 4">
+                  <div class="review-card">
+                    <div class="review-top">
+                      <div class="review-avatar" style="background:#d7f6e4;color:#16a34a;">МБ</div>
+                      <div>
+                        <strong class="review-author">Максим Бойко</strong>
+                        <span class="review-role">Frontend-розробник</span>
+                      </div>
+                      <span class="review-stars" aria-label="Оцінка 5 з 5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                    </div>
+                    <p class="review-text">«Дуже чистий та швидкий інтерфейс без зайвого шуму. Стовпчаста діаграма по місяцях і миттєвий експорт у CSV — саме те, що потрібно для щоденного обліку.»</p>
+                    <span class="review-date">04 листопада 2026</span>
+                  </div>
+                </article>
+
+                <article class="review-slide" aria-label="Відгук 3 з 4">
+                  <div class="review-card">
+                    <div class="review-top">
+                      <div class="review-avatar" style="background:#f3e8ff;color:#7e22ce;">ІМ</div>
+                      <div>
+                        <strong class="review-author">Ірина Мельник</strong>
+                        <span class="review-role">Графічна дизайнерка</span>
+                      </div>
+                      <span class="review-stars" aria-label="Оцінка 5 з 5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                    </div>
+                    <p class="review-text">«Зручно вести облік фриланс-надходжень з різних джерел. Навіть з телефону додавати витрати після магазину займає буквально 5 секунд.»</p>
+                    <span class="review-date">27 жовтня 2026</span>
+                  </div>
+                </article>
+
+                <article class="review-slide" aria-label="Відгук 4 з 4">
+                  <div class="review-card">
+                    <div class="review-top">
+                      <div class="review-avatar" style="background:#fff1e0;color:#d97706;">АС</div>
+                      <div>
+                        <strong class="review-author">Артем Савчук</strong>
+                        <span class="review-role">Підприємець</span>
+                      </div>
+                      <span class="review-stars" aria-label="Оцінка 5 з 5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                    </div>
+                    <p class="review-text">«Подобається наочний рейтинг найбільших витрат і розподіл за категоріями. Дані синхронізуються миттєво між ноутбуком і смартфоном.»</p>
+                    <span class="review-date">19 жовтня 2026</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div class="carousel-dots" id="reviews-dots" role="tablist" aria-label="Вибір слайду відгуку"></div>
+          </div>
+
+          <hr class="section-divider">
+
+          <!-- Форма зворотного зв'язку -->
+          <h3 class="feedback-subhead">Залишити свій відгук або запитання</h3>
+          <form action="#" method="post" class="simple-form" id="feedback-form">
+            <div class="feedback-grid">
+              <div>
+                <label for="fb-name">Ім'я</label>
+                <input type="text" id="fb-name" name="fb-name" placeholder="Ваше ім'я" required minlength="2">
+              </div>
+              <div>
+                <label for="fb-email">Email</label>
+                <input type="email" id="fb-email" name="fb-email" placeholder="name@example.com" required>
+              </div>
+            </div>
+            <div>
+              <label for="fb-message">Повідомлення або відгук про сайт</label>
+              <textarea id="fb-message" name="fb-message" rows="3" placeholder="Поділіться враженнями про FinTrack…" required minlength="5"></textarea>
+            </div>
+            <p class="form-msg" id="fb-msg" role="status"></p>
+            <button type="submit">Надіслати відгук</button>
+            <button type="reset">Очистити</button>
+          </form>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== МОДАЛКА: НАЛАШТУВАННЯ ===================== -->
+  <dialog id="settings-modal" aria-labelledby="settings-heading">
+    <button type="button" id="close-settings" class="dialog-close" aria-label="Закрити вікно">&times;</button>
+    <h2 id="settings-heading">Налаштування</h2>
+
+    <div class="settings-block">
+      <h3>Акаунт</h3>
+      <p class="settings-row"><span>Email</span><strong id="settings-email">—</strong></p>
+      <p class="settings-row"><span>Транзакцій у базі</span><strong id="settings-count">0</strong></p>
+      <button type="button" id="settings-logout" class="btn-ghost">Вийти з акаунта</button>
+    </div>
+
+    <div class="settings-block">
+      <h3>Дані</h3>
+      <p class="settings-hint">Експорт збереже всі ваші транзакції у файл CSV, який відкривається в Excel.</p>
+      <button type="button" id="settings-export" class="btn-ghost">Експортувати CSV</button>
+    </div>
+
+    <div class="settings-block settings-block--danger">
+      <h3>Небезпечна зона</h3>
+      <p class="settings-hint">Усі ваші транзакції буде видалено без можливості відновлення.</p>
+      <button type="button" id="settings-wipe" class="btn-danger">Видалити всі транзакції</button>
+    </div>
+  </dialog>
+
+  <!-- Кнопка "Нагору" з плавним переходом -->
+  <a href="#main-nav" id="scroll-up" class="scroll-up" aria-label="Перейти до навігації" title="Нагору до навігації" hidden>
+    <span class="scroll-up-arrow" aria-hidden="true"></span>
+  </a>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 FinTrack. Навчальний проєкт &middot; <a href="pages/article-1.html">Гід (Bootstrap)</a> &middot; <a href="pages/article-2.html">50/30/20 (Sass)</a> &middot; <a href="pages/invitation.html">Запрошення</a></p>
+  </footer>
+
+  <!-- ===================== МОДАЛКА: ВХІД / РЕЄСТРАЦІЯ (З HTML/CSS ВАЛІДАЦІЄЮ) ===================== -->
+  <dialog id="auth-modal" aria-labelledby="auth-heading">
+    <button type="button" id="close-auth" class="dialog-close" aria-label="Закрити вікно">&times;</button>
+    <h2 id="auth-heading">Sign in / Реєстрація</h2>
+    <p class="auth-subtitle">Валідація полів працює миттєво засобами HTML5 та CSS псевдокласів.</p>
+
+    <form id="login-form" class="validated-form">
+      <h3>Вхід в акаунт</h3>
+      <div class="val-field">
+        <label for="login-email">Email</label>
+        <div class="input-status-wrap">
+          <input type="email" id="login-email" name="email" placeholder=" " required autocomplete="email" pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$">
+          <span class="val-badge" aria-hidden="true"></span>
+        </div>
+        <span class="css-val-hint" data-error="Введіть коректний email (наприклад, user@mail.com)" data-ok="Коректний формат email">Введіть ваш email</span>
+      </div>
+      <div class="val-field">
+        <label for="login-password">Пароль</label>
+        <div class="input-status-wrap">
+          <input type="password" id="login-password" name="password" placeholder=" " minlength="8" maxlength="64" required autocomplete="current-password" aria-describedby="login-pwd-hint">
+          <button type="button" class="pwd-toggle" data-toggle-pwd="login-password" aria-label="Показати або приховати пароль" title="Показати пароль">&#128065;</button>
+          <span class="val-badge" aria-hidden="true"></span>
+        </div>
+        <span class="css-val-hint" id="login-pwd-hint" data-error="Пароль має містити щонайменше 8 символів" data-ok="Довжина пароля коректна">Мінімум 8 символів</span>
+      </div>
+      <p class="form-msg" id="login-msg" role="alert"></p>
+      <div class="form-actions">
+        <button type="submit">Увійти</button>
+        <button type="reset">Очистити</button>
+      </div>
+    </form>
+
+    <form id="register-form" class="validated-form">
+      <h3>Реєстрація нового користувача</h3>
+      <div class="val-field">
+        <label for="reg-email">Email</label>
+        <div class="input-status-wrap">
+          <input type="email" id="reg-email" name="email" placeholder=" " required autocomplete="email" pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$">
+          <span class="val-badge" aria-hidden="true"></span>
+        </div>
+        <span class="css-val-hint" data-error="Вкажіть дійсну електронну адресу" data-ok="Email підходить для реєстрації">Формат: name@example.com</span>
+      </div>
+      <div class="val-field">
+        <label for="reg-password">Пароль</label>
+        <div class="input-status-wrap">
+          <input type="password" id="reg-password" name="password" placeholder=" " minlength="8" maxlength="64" pattern="(?=.*[A-Za-z])(?=.*\d).{8,}" required autocomplete="new-password" aria-describedby="reg-pwd-hint">
+          <button type="button" class="pwd-toggle" data-toggle-pwd="reg-password" aria-label="Показати або приховати пароль" title="Показати пароль">&#128065;</button>
+          <span class="val-badge" aria-hidden="true"></span>
+        </div>
+        <span class="css-val-hint" id="reg-pwd-hint" data-error="Мінімум 8 символів, обов'язково латинська літера та цифра" data-ok="Надійний пароль">Мінімум 8 символів (літера + цифра)</span>
+      </div>
+      <div class="val-field">
+        <label for="reg-password2">Повторіть пароль</label>
+        <div class="input-status-wrap">
+          <input type="password" id="reg-password2" name="password2" placeholder=" " minlength="8" maxlength="64" pattern="(?=.*[A-Za-z])(?=.*\d).{8,}" required autocomplete="new-password">
+          <button type="button" class="pwd-toggle" data-toggle-pwd="reg-password2" aria-label="Показати або приховати пароль" title="Показати пароль">&#128065;</button>
+          <span class="val-badge" aria-hidden="true"></span>
+        </div>
+        <span class="css-val-hint" data-error="Введіть пароль повторно (від 8 символів)" data-ok="Формат підтвердження коректний">Повторіть введений вище пароль</span>
+      </div>
+      <p class="form-msg" id="reg-msg" role="alert"></p>
+      <div class="form-actions">
+        <button type="submit">Зареєструватися</button>
+        <button type="reset">Очистити</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- ===================== МОДАЛКА: ОПИТУВАЛЬНИК ===================== -->
+  <dialog id="survey-modal" aria-labelledby="survey-heading">
+    <button type="button" id="close-survey" class="dialog-close" aria-label="Закрити вікно">&times;</button>
+    <h2 id="survey-heading">Розкажіть про свої фінансові цілі</h2>
+
+    <form id="survey-form">
+      <div>
+        <label for="survey-login">Логін</label>
+        <input type="text" id="survey-login" name="login" placeholder="Ваш логін" required>
+      </div>
+
+      <div>
+        <label for="survey-email">Email</label>
+        <input type="email" id="survey-email" name="email" placeholder="name@example.com" required>
+      </div>
+
+      <div>
+        <label for="survey-comment">Розкажіть детальніше про свою мету</label>
+        <textarea id="survey-comment" name="comment" rows="4" placeholder="Наприклад: хочу накопичити на відпустку…"></textarea>
+      </div>
+
+      <div>
+        <label for="survey-goal">Основна мета</label>
+        <select id="survey-goal" name="goal">
+          <option value="savings" selected>Заощадження</option>
+          <option value="debt">Погашення боргів</option>
+          <option value="investing">Інвестування</option>
+          <option value="budgeting">Контроль витрат</option>
+        </select>
+      </div>
+
+      <fieldset>
+        <legend>Як часто плануєте перевіряти застосунок?</legend>
+        <div>
+          <input type="radio" id="freq-daily" name="frequency" value="daily" checked>
+          <label for="freq-daily">Щодня</label>
+        </div>
+        <div>
+          <input type="radio" id="freq-weekly" name="frequency" value="weekly">
+          <label for="freq-weekly">Щотижня</label>
+        </div>
+        <div>
+          <input type="radio" id="freq-monthly" name="frequency" value="monthly">
+          <label for="freq-monthly">Щомісяця</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Якими функціями цікавитесь?</legend>
+        <div>
+          <input type="checkbox" id="feat-budget" name="features" value="budget">
+          <label for="feat-budget">Бюджети</label>
+        </div>
+        <div>
+          <input type="checkbox" id="feat-goals" name="features" value="goals">
+          <label for="feat-goals">Цілі</label>
+        </div>
+        <div>
+          <input type="checkbox" id="feat-reports" name="features" value="reports">
+          <label for="feat-reports">Звіти</label>
+        </div>
+      </fieldset>
+
+      <button type="submit">Надіслати</button>
+      <button type="reset">Очистити</button>
+    </form>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="scripts/config.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>

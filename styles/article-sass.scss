@@ -1,0 +1,293 @@
+// =========================================================
+// FinTrack: Стилі сторінки "Правило 50/30/20" (Sass / SCSS)
+// Компілюється у styles/article-sass.css через Live Sass Compiler
+// =========================================================
+
+// 1. Змінні Sass
+$bg-page: #eef0f3;
+$surface: #ffffff;
+$text-main: #1a1d23;
+$text-muted: #64748b;
+$border-color: #e2e8f0;
+
+$primary: #2f6fed;
+$primary-dark: #1d4ed8;
+$accent-green: #16a34a;
+$accent-amber: #d97706;
+$accent-pink: #be185d;
+
+$radius-lg: 22px;
+$radius-md: 14px;
+$shadow-elevated: 0 18px 42px rgba(20, 24, 33, 0.08);
+$font-stack: "Inter", sans-serif;
+
+// 2. Міксини (Mixins)
+@mixin card-surface($pad: 24px) {
+  background: $surface;
+  border: 1px solid $border-color;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-elevated;
+  padding: $pad;
+}
+
+@mixin badge-pill($bg, $fg) {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: $bg;
+  color: $fg;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+// 3. Плейсхолдер для @extend
+%flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// 4. Базові стилі
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: $font-stack;
+  background: $bg-page;
+  color: $text-main;
+  line-height: 1.65;
+}
+
+// 5. Вкладеність селекторів (Nesting)
+.sass-nav {
+  background: $surface;
+  border-bottom: 1px solid $border-color;
+  padding: 14px 20px;
+
+  &__inner {
+    @extend %flex-between;
+    max-width: 960px;
+    margin: 0 auto;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+
+    img {
+      height: 28px;
+      display: block;
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    a {
+      color: $text-muted;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+
+      &:hover,
+      &.is-active {
+        color: $primary;
+      }
+    }
+  }
+}
+
+.sass-layout {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 16px 56px;
+}
+
+.sass-article {
+  @include card-surface(0);
+  overflow: hidden;
+
+  &__hero {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 24px;
+    align-items: center;
+    padding: 32px;
+    background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+    border-bottom: 1px solid $border-color;
+
+    @media (max-width: 720px) {
+      grid-template-columns: 1fr;
+      padding: 22px;
+    }
+  }
+
+  &__tag {
+    @include badge-pill(#fce7f3, $accent-pink);
+    margin-bottom: 12px;
+  }
+
+  &__title {
+    margin: 0 0 12px;
+    font-size: 1.85rem;
+    line-height: 1.25;
+
+    @media (max-width: 480px) {
+      font-size: 1.45rem;
+    }
+  }
+
+  &__lead {
+    margin: 0;
+    color: $text-muted;
+    font-size: 1rem;
+  }
+
+  &__media {
+    background: $surface;
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
+    padding: 14px;
+
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+    }
+  }
+
+  &__body {
+    padding: 32px;
+
+    @media (max-width: 480px) {
+      padding: 22px 18px;
+    }
+
+    h2 {
+      font-size: 1.22rem;
+      margin: 26px 0 10px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: #334155;
+    }
+  }
+}
+
+// 6. Цикл @each для карток часток 50% / 30% / 20%
+$buckets: (
+  "needs": ($primary, #eaf1fe, "50%"),
+  "wants": ($accent-amber, #fef3c7, "30%"),
+  "savings": ($accent-green, #dcfce7, "20%")
+);
+
+.bucket-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 22px 0;
+
+  @media (max-width: 720px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bucket-card {
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  padding: 20px;
+  background: $surface;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(20, 24, 33, 0.08);
+  }
+
+  &__pct {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  &__desc {
+    margin: 0;
+    font-size: 0.88rem;
+    color: $text-muted;
+  }
+}
+
+@each $key, $vals in $buckets {
+  $color: nth($vals, 1);
+  $tint: nth($vals, 2);
+
+  .bucket-card--#{$key} {
+    border-top: 4px solid $color;
+
+    .bucket-card__pct {
+      color: $color;
+    }
+
+    .bucket-card__pill {
+      @include badge-pill($tint, $color);
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.sass-cta {
+  @extend %flex-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  padding: 20px 24px;
+  border-radius: $radius-md;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+
+  &__btn {
+    display: inline-block;
+    background: $primary;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background: $primary-dark;
+    }
+  }
+}
+
+.sass-footer {
+  text-align: center;
+  padding: 20px 16px 32px;
+  color: $text-muted;
+  font-size: 0.84rem;
+}

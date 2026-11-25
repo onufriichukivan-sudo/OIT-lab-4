@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Запрошення на подію та конверт | FinTrack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/invitation.css">
+</head>
+<body>
+
+  <!-- Верхня панель керування (не друкується) -->
+  <header class="print-toolbar">
+    <div class="toolbar-left">
+      <a href="../index.html" class="back-link">&larr; Назад до FinTrack</a>
+      <label for="guest-name-input" style="font-size:0.82rem;font-weight:600;color:#64748b;">Отримувач:</label>
+      <input type="text" id="guest-name-input" class="guest-input" value="Шановному учаснику" placeholder="Введіть ім'я гостя…">
+    </div>
+    <div class="toolbar-right">
+      <button type="button" id="toggle-envelope-btn" class="btn-tool">Відкрити / закрити конверт</button>
+      <button type="button" id="print-doc-btn" class="btn-print">&#128424; Друкувати запрошення та конверт</button>
+    </div>
+  </header>
+
+  <main class="sheet-container">
+
+    <!-- 1. ДОКУМЕНТ ЗАПРОШЕННЯ -->
+    <section aria-labelledby="inv-heading">
+      <p class="doc-label">Документ 1 — Офіційне запрошення на подію</p>
+      <article class="invitation-card">
+        <div class="inv-header">
+          <img src="../images/logo.png" alt="FinTrack">
+          <span class="inv-badge">Офіційне запрошення</span>
+        </div>
+
+        <p class="inv-kicker">Освітній фінансовий воркшоп</p>
+        <h1 class="inv-title" id="inv-heading">FinTrack Live: Особистий бюджет та фінансова грамотність 2026</h1>
+
+        <p class="inv-recipient">
+          Вітаємо, <strong id="inv-guest-display">Шановному учаснику</strong>!
+        </p>
+        <p class="inv-text">
+          Команда <strong>FinTrack</strong> має честь запросити вас на практичний інтенсив із планування особистого бюджету, автоматизації обліку витрат та формування фінансової подушки безпеки.
+        </p>
+
+        <div class="inv-details">
+          <div class="inv-detail-item">
+            <span>Дата проведення</span>
+            <strong>12 грудня 2026 р.</strong>
+          </div>
+          <div class="inv-detail-item">
+            <span>Час початку</span>
+            <strong>14:00 (EET)</strong>
+          </div>
+          <div class="inv-detail-item">
+            <span>Локація</span>
+            <strong>м. Чернівці, вул. Університетська, 28</strong>
+          </div>
+        </div>
+
+        <ul class="inv-program">
+          <li><strong>14:00 – 14:40:</strong> Як налаштувати систему категорій та правила 50/30/20 у FinTrack.</li>
+          <li><strong>14:45 – 15:30:</strong> Аналіз реальних кейсів оптимізації щомісячних витрат.</li>
+          <li><strong>15:30 – 16:00:</strong> Нетворкінг, відповіді на запитання та розіграш подарунків.</li>
+        </ul>
+
+        <div class="inv-footer">
+          <div>
+            <div class="inv-sign-line"></div>
+            <small style="color:#64748b;">Організаційний комітет FinTrack</small>
+          </div>
+          <div class="inv-ticket-code">PASS #FT-2026-04</div>
+        </div>
+      </article>
+    </section>
+
+    <!-- 2. КОНВЕРТ ДЛЯ ЗАПРОШЕННЯ -->
+    <section aria-labelledby="env-heading" class="envelope-wrapper">
+      <p class="doc-label" id="env-heading">Документ 2 — Поштовий конверт формату DL / C6</p>
+      <div class="envelope" id="event-envelope">
+        <div class="envelope-flap" aria-hidden="true"></div>
+
+        <div class="envelope-top">
+          <div class="env-sender">
+            <strong>Відправник: Команда FinTrack</strong>
+            <span>58012, Україна, м. Чернівці</span><br>
+            <span>вул. Університетська, 28</span>
+          </div>
+
+          <div class="postage-stamp" aria-label="Поштова марка FinTrack">
+            <span>&#128200;</span>
+            <div>УКРАЇНА<br>FINTRACK<br>2026</div>
+          </div>
+        </div>
+
+        <button type="button" class="wax-seal" id="wax-seal-btn" title="Натисніть, щоб відкрити або закрити конверт" aria-label="Сургучна печатка FinTrack">
+          FT
+        </button>
+
+        <div class="envelope-bottom">
+          <div class="env-to-label">Кому (Отримувач):</div>
+          <div class="env-line" id="env-guest-display">Шановному учаснику</div>
+          <div class="env-line" style="font-weight:400;color:#475569;">Учаснику фінансового воркшопу FinTrack 2026</div>
+          <div class="env-line" style="font-weight:400;color:#64748b;font-size:0.84rem;">Україна, м. Чернівці</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const guestInput = document.getElementById('guest-name-input');
+    const invGuest = document.getElementById('inv-guest-display');
+    const envGuest = document.getElementById('env-guest-display');
+    const envelope = document.getElementById('event-envelope');
+
+    guestInput.addEventListener('input', () => {
+      const val = guestInput.value.trim() || 'Шановному учаснику';
+      invGuest.textContent = val;
+      envGuest.textContent = val;
+    });
+
+    function toggleEnvelope() {
+      envelope.classList.toggle('is-open');
+    }
+
+    document.getElementById('wax-seal-btn').addEventListener('click', toggleEnvelope);
+    document.getElementById('toggle-envelope-btn').addEventListener('click', toggleEnvelope);
+    document.getElementById('print-doc-btn').addEventListener('click', () => window.print());
+  </script>
+</body>
+</html>
